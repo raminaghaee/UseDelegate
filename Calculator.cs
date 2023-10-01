@@ -9,18 +9,22 @@ namespace test
     internal class Calculator
     {
         public delegate int CalculatorDelegate(int x, int y);
-        public void equal(int x , int y,char operatorChar)
+        public void Equal(int x, int y, char operatorChar)
         {
-
-            CalculatorDelegate calculator = operatorChar switch
+            if (operatorChar == '+' || operatorChar == '-' || operatorChar == '*' || operatorChar == '/')
             {
-                '+' => calculator = Sum,
-                '-' => calculator = Subtraction,
-                '*' => calculator = Multiplication,
-                '/' => calculator = Division,
-                _ => calculator = Sum,
-            };
-            Console.WriteLine(calculator(x,y));
+
+                CalculatorDelegate calculator = operatorChar switch
+                {
+                    '+' => calculator = Sum,
+                    '-' => calculator = Subtraction,
+                    '*' => calculator = Multiplication,
+                    '/' => calculator = Division,
+                };
+                Console.WriteLine(calculator(x, y));
+            }
+            else
+                Console.WriteLine("Error performing the operation, try again");
         }
         public static int Sum(int x, int y)
         {
